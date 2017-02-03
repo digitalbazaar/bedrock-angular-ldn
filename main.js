@@ -5,7 +5,7 @@
  */
 define([
   'angular',
-  //'./ldn-service'
+  './ldn-service'
 ], function(angular) {
 
 'use strict';
