@@ -1,2 +1,2 @@
-# bedrock-angular-ldn-consumer
- Bedrock AngularJS module for Linked Data Notification Consumer
+# bedrock-angular-ldn
+ Bedrock AngularJS module for Linked Data Notification Sender+Consumer
