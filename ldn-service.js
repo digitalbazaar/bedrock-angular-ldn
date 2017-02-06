@@ -25,6 +25,13 @@ function factory($http, $q) {
 
   var service = {};
 
+  service.INBOX_DEFAULT_CONTEXT = {
+    '@context': [
+      CONTEXT_URL_LDP,
+      {owner: {'@id': 'https://w3id.org/security#owner', '@type': '@id'}}
+    ]
+  };
+
   /**
    * Sends a LDN message.
    *
@@ -71,6 +78,35 @@ function factory($http, $q) {
   };
 
   /**
+   * Creates an LDN inbox.
+   *
+   * Default properties will be constructed for the inbox. These can be
+   * overridden by using the `options.inbox` option, but they must conform
+   * to the `brLdnService.INBOX_DEFAULT_CONTEXT` JSON-LD @context.
+   *
+   * TODO: Should we depend on bedrock-angular-resource and create a
+   * collection here or not?
+   *
+   * @param createUrl the URL to post to in order to create the inbox.
+   * @param [options] the options to use:
+   *          [inbox] the LDN inbox, sans its ID, to create; a default context
+   *            of `brLdnService.INBOX_DEFAULT_CONTEXT` will be assigned if
+   *            none is given.
+   * @return a Promise that resolves to the LDN inbox interface upon successful
+   *           retrieval of its LDN container information.
+   */
+  service.createInbox = function(createUrl, options) {
+    options = options || {};
+    var inbox = angular.extend({}, {
+      '@context': service.INBOX_DEFAULT_CONTEXT,
+      type: 'Container'
+    }, options.inbox || {});
+    return $http.post(createUrl, JSON.stringify(inbox), {
+      'Content-Type': 'application/ld+json'
+    });
+  };
+
+  /**
    * Gets an interface for an LDN inbox.
    *
    * @param inbox the URL for the LDN inbox.
@@ -80,11 +116,11 @@ function factory($http, $q) {
    */
   service.getInbox = function(inbox) {
     return jsonld.promises.frame(inbox, INBOX_FRAME).then(function(framed) {
-      var result = framed['@graph'][0];
-      if(!result) {
+      var container = framed['@graph'][0];
+      if(!container) {
         throw new Error('LDN inbox container not found.');
       }
-      return result;
+      return new Inbox(container);
     });
   };
 
