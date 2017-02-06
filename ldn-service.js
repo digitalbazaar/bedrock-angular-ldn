@@ -10,7 +10,7 @@ function register(module) {
 }
 
 /* @ngInject */
-function factory($http) {
+function factory($http, $q) {
   var CONTEXT_URL_LDP = 'https://www.w3.org/ns/ldp';
   var CONTEXT_URL_AS = 'https://www.w3.org/ns/activitystreams';
   var LDN_INBOX = 'http://www.w3.org/ns/ldp#inbox';
@@ -170,7 +170,7 @@ function factory($http) {
     var start = options.index;
     var slice = self.container.slice(start, start + options.count);
 
-    return Promise.all(slice.map(function(url, idx) {
+    return $q.all(slice.map(function(url, idx) {
       // TODO: do JSON-LD compaction to CONTEXT_URL
       var frame = {
         '@context': CONTEXT_URL_AS,
