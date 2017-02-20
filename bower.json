@@ -14,6 +14,7 @@
     "package.json"
   ],
   "dependencies": {
-    "bedrock-angular": "^2.0.0"
+    "bedrock-angular": "^2.0.0",
+    "jsonld": "~0.4.11"
   }
 }
