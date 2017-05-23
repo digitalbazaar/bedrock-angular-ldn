@@ -1,16 +1,11 @@
 /*!
  * Copyright (c) 2017 Digital Bazaar, Inc. All rights reserved.
  */
-define(['angular', 'jsonld'], function(angular, jsonld) {
-
-'use strict';
-
-function register(module) {
-  module.service('brLdnService', factory);
-}
+import angular from 'angular';
+import jsonld from 'jsonld';
 
 /* @ngInject */
-function factory($http, $q) {
+export default function factory($http, $q) {
   var CONTEXT_URL_LDP = 'https://www.w3.org/ns/ldp';
   var CONTEXT_URL_AS = 'https://www.w3.org/ns/activitystreams';
   var LDN_INBOX = 'http://www.w3.org/ns/ldp#inbox';
@@ -250,7 +245,3 @@ function factory($http, $q) {
 
   return service;
 }
-
-return register;
-
-});

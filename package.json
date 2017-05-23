@@ -1,0 +1,21 @@
+{
+  "name": "bedrock-angular-ldn",
+  "version": "1.0.0",
+  "description": "Bedrock AngularJS module for Linked Data Notification Sender+Consumer",
+  "main": "index.js",
+  "dependencies": {
+    "angular": "~1.6.4",
+    "jsonld": "~0.4.11"
+  },
+  "bedrock": {
+    "browserDependencies": "all"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digitalbazaar/bedrock-angular-ldn.git"
+  },
+  "bugs": {
+    "url": "https://github.com/digitalbazaar/bedrock-angular-ldn/issues"
+  },
+  "homepage": "https://github.com/digitalbazaar/bedrock-angular-ldn#readme"
+}
