@@ -1,6 +1,6 @@
 {
   "name": "bedrock-angular-ldn",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Bedrock AngularJS module for Linked Data Notification Sender+Consumer",
   "main": "index.js",
   "dependencies": {
