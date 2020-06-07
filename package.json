@@ -4,7 +4,7 @@
   "description": "Bedrock AngularJS module for Linked Data Notification Sender+Consumer",
   "main": "index.js",
   "dependencies": {
-    "angular": "~1.6.4",
+    "angular": "~1.8.0",
     "jsonld": "~0.4.11"
   },
   "bedrock": {
